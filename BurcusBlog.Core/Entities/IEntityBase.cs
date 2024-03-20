@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BurcusBlog.Core.Entities
 {
-    public class IEntityBase
+    public interface IEntityBase
     {
     }
 }
