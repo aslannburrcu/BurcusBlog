@@ -11,11 +11,11 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.9" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\BurcusBlog.Data\BurcusBlog.Data.csproj" />
+    <ProjectReference Include="..\BurcusBlog.Service\BurcusBlog.Service.csproj" />
   </ItemGroup>
 
 </Project>

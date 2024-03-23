@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BurcusBlog.Data\BurcusBlog.Data.csproj" />
+    <ProjectReference Include="..\BurcusBlog.Entity\BurcusBlog.Entity.csproj" />
+  </ItemGroup>
+
 </Project>

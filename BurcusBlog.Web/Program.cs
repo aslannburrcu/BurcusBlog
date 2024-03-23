@@ -1,14 +1,13 @@
-using BurcusBlog.Data.Context;
 using BurcusBlog.Data.Extensions;
-using Microsoft.EntityFrameworkCore;
-using System.Reflection;
+using BurcusBlog.Service.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.LoadDataLayerExtension(builder.Configuration);
+builder.Services.LoadServiceExtensions();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 
 var app = builder.Build();
 
