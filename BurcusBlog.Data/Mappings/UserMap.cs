@@ -60,6 +60,7 @@ namespace BurcusBlog.Data.Mappings
                 PhoneNumberConfirmed = true,
                 EmailConfirmed = true,
                 SecurityStamp = Guid.NewGuid().ToString(),
+                ImageId = Guid.Parse("5CA2CDE2-06DC-4A0F-BF85-F11B85E67FDE"),
             };
             superAdmin.PasswordHash = CreatePasswordHash(superAdmin, "123456");
 
@@ -76,6 +77,7 @@ namespace BurcusBlog.Data.Mappings
                 PhoneNumberConfirmed = false,
                 EmailConfirmed = false,
                 SecurityStamp = Guid.NewGuid().ToString(),
+                ImageId = Guid.Parse("E5A1D749-A841-42EF-9C1B-B75668702CC2"),
             };
 
             admin.PasswordHash = CreatePasswordHash(superAdmin, "123456");

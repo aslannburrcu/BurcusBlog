@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BurcusBlog.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240403133017_userCreated")]
-    partial class userCreated
+    [Migration("20240403151029_Initialize")]
+    partial class Initialize
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -55,21 +55,21 @@ namespace BurcusBlog.Data.Migrations
                         new
                         {
                             Id = new Guid("51a743f1-c785-4fef-9be8-cb3cfecdc253"),
-                            ConcurrencyStamp = "ec32e50b-8401-4622-9898-8d36bf0ce82b",
+                            ConcurrencyStamp = "072aba3c-3b21-479d-8ee1-08ad502ee81c",
                             Name = "SuperAdmin",
                             NormalizedName = "SUPERADMIN"
                         },
                         new
                         {
                             Id = new Guid("1e5aa0f3-b6fd-407d-a4ea-94517513cb76"),
-                            ConcurrencyStamp = "cff2474b-0f49-4c8a-967e-fc6126ee483d",
+                            ConcurrencyStamp = "7cfffe6e-28e4-436a-b054-04875a35058e",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = new Guid("bee7691b-2a32-42f8-8b8c-baff9062c4ad"),
-                            ConcurrencyStamp = "08da51e9-84a5-4fd9-98bb-8871b84e3c79",
+                            ConcurrencyStamp = "fabe4c6d-3944-4f62-9aaf-fd83d6ec7dd9",
                             Name = "user",
                             NormalizedName = "USER"
                         });
@@ -123,6 +123,9 @@ namespace BurcusBlog.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<Guid>("ImageId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -162,6 +165,8 @@ namespace BurcusBlog.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ImageId");
+
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
 
@@ -177,18 +182,19 @@ namespace BurcusBlog.Data.Migrations
                         {
                             Id = new Guid("275b092a-f867-42c9-89fb-167dc1c9a292"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f487937a-c625-4d48-a69a-232e5fb1ff09",
+                            ConcurrencyStamp = "2c5d734c-bd65-4b58-b616-8ee4d09f9e18",
                             Email = "superadmin@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Burcu",
+                            ImageId = new Guid("5ca2cde2-06dc-4a0f-bf85-f11b85e67fde"),
                             LastName = "Aslan",
                             LockoutEnabled = false,
                             NormalizedEmail = "SUPERADMIN@GMAIL.COM",
                             NormalizedUserName = "SUPERADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEEw/AWoGkZC4JXxabeq5hHEnXi0awXdF7NKCcLlz3PoeXXAoVXtImBDOD+2gUh+n+g==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEOYlmNeqWFPHR8ONrdlMiLZa5haGpzsj0j1ae4lfg4sO+//T0O6B/uX9WBANYcYdRw==",
                             PhoneNumber = "+90356789898",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "a592552e-3668-4be1-9697-56c6dd7b9aba",
+                            SecurityStamp = "94b1ec53-1a62-4dc4-9a4c-4ae1ed6a5700",
                             TwoFactorEnabled = false,
                             UserName = "superadmin@gmail.com"
                         },
@@ -196,18 +202,19 @@ namespace BurcusBlog.Data.Migrations
                         {
                             Id = new Guid("67f122e2-0b40-4204-b3ab-17c6031ad896"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "be1b4b78-9fa4-4c52-bcf2-135a878fa24b",
+                            ConcurrencyStamp = "d1c21131-b617-45e2-9008-d66bcfab7bea",
                             Email = "admin@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Admin",
+                            ImageId = new Guid("e5a1d749-a841-42ef-9c1b-b75668702cc2"),
                             LastName = "User",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHRbQN1eAzf2eKcCjhdDrAhnyiDjdr6wtLolPndJqcKyWV4JpNLLcNr1Y8+ozoAqeA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELpYHl7T0UP5wRulQ0e+/9mLhsDNwWllRGu3Qsevttlyr6EB7qsI0xSQajYbbsNBTg==",
                             PhoneNumber = "+90356789898",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "1261824a-4fa3-45a4-b545-9bc43327965b",
+                            SecurityStamp = "ce7f0744-c610-4401-8df5-5a4c6a7bfa46",
                             TwoFactorEnabled = false,
                             UserName = "admin@gmail.com"
                         });
@@ -332,7 +339,7 @@ namespace BurcusBlog.Data.Migrations
                     b.Property<DateTime?>("DeletedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("ImageId")
+                    b.Property<Guid?>("ImageId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("IsDeleted")
@@ -348,6 +355,9 @@ namespace BurcusBlog.Data.Migrations
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<int>("ViewCount")
                         .HasColumnType("int");
 
@@ -357,31 +367,35 @@ namespace BurcusBlog.Data.Migrations
 
                     b.HasIndex("ImageId");
 
+                    b.HasIndex("UserId");
+
                     b.ToTable("Articles");
 
                     b.HasData(
                         new
                         {
-                            Id = new Guid("3b5449ee-1790-41da-a11b-e3e310bf3c11"),
+                            Id = new Guid("3d194f7c-f96d-4183-bac3-3452850ae785"),
                             CategoryId = new Guid("1fdd5ef2-6f21-4e57-8fa9-b04354633a92"),
                             Content = " Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
                             CreatedBy = "Admin Test",
-                            CreatedDate = new DateTime(2024, 4, 3, 16, 30, 16, 222, DateTimeKind.Local).AddTicks(7958),
+                            CreatedDate = new DateTime(2024, 4, 3, 18, 10, 28, 945, DateTimeKind.Local).AddTicks(3829),
                             ImageId = new Guid("5ca2cde2-06dc-4a0f-bf85-f11b85e67fde"),
                             IsDeleted = false,
                             Title = "Asp.net Core Deneme Makalesi 1",
+                            UserId = new Guid("275b092a-f867-42c9-89fb-167dc1c9a292"),
                             ViewCount = 15
                         },
                         new
                         {
-                            Id = new Guid("54431a9e-040e-472b-a89d-9086c89a1730"),
+                            Id = new Guid("1de35c57-1c6e-4d50-9f1a-f04897a6b3b6"),
                             CategoryId = new Guid("0f3b77ec-8445-4634-b9be-5c2f1180af0c"),
                             Content = " Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
                             CreatedBy = "Admin Test",
-                            CreatedDate = new DateTime(2024, 4, 3, 16, 30, 16, 222, DateTimeKind.Local).AddTicks(7985),
+                            CreatedDate = new DateTime(2024, 4, 3, 18, 10, 28, 945, DateTimeKind.Local).AddTicks(3842),
                             ImageId = new Guid("e5a1d749-a841-42ef-9c1b-b75668702cc2"),
                             IsDeleted = false,
                             Title = "visual studio Deneme Makalesi 1",
+                            UserId = new Guid("67f122e2-0b40-4204-b3ab-17c6031ad896"),
                             ViewCount = 15
                         });
                 });
@@ -427,7 +441,7 @@ namespace BurcusBlog.Data.Migrations
                         {
                             Id = new Guid("1fdd5ef2-6f21-4e57-8fa9-b04354633a92"),
                             CreatedBy = "Admin Test",
-                            CreatedDate = new DateTime(2024, 4, 3, 16, 30, 16, 222, DateTimeKind.Local).AddTicks(8376),
+                            CreatedDate = new DateTime(2024, 4, 3, 18, 10, 28, 945, DateTimeKind.Local).AddTicks(4770),
                             IsDeleted = false,
                             Name = "Asp.net Core"
                         },
@@ -435,7 +449,7 @@ namespace BurcusBlog.Data.Migrations
                         {
                             Id = new Guid("0f3b77ec-8445-4634-b9be-5c2f1180af0c"),
                             CreatedBy = "Admin Test",
-                            CreatedDate = new DateTime(2024, 4, 3, 16, 30, 16, 222, DateTimeKind.Local).AddTicks(8381),
+                            CreatedDate = new DateTime(2024, 4, 3, 18, 10, 28, 945, DateTimeKind.Local).AddTicks(4776),
                             IsDeleted = false,
                             Name = "visual Studio 2022"
                         });
@@ -486,7 +500,7 @@ namespace BurcusBlog.Data.Migrations
                         {
                             Id = new Guid("5ca2cde2-06dc-4a0f-bf85-f11b85e67fde"),
                             CreatedBy = "Admin Test",
-                            CreatedDate = new DateTime(2024, 4, 3, 16, 30, 16, 222, DateTimeKind.Local).AddTicks(8592),
+                            CreatedDate = new DateTime(2024, 4, 3, 18, 10, 28, 945, DateTimeKind.Local).AddTicks(5380),
                             FileName = "images/testimage",
                             FileType = "jpg",
                             IsDeleted = false
@@ -495,7 +509,7 @@ namespace BurcusBlog.Data.Migrations
                         {
                             Id = new Guid("e5a1d749-a841-42ef-9c1b-b75668702cc2"),
                             CreatedBy = "Admin Test",
-                            CreatedDate = new DateTime(2024, 4, 3, 16, 30, 16, 222, DateTimeKind.Local).AddTicks(8597),
+                            CreatedDate = new DateTime(2024, 4, 3, 18, 10, 28, 945, DateTimeKind.Local).AddTicks(5387),
                             FileName = "images/vstest",
                             FileType = "png",
                             IsDeleted = false
@@ -509,6 +523,17 @@ namespace BurcusBlog.Data.Migrations
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("BurcusBlog.Entity.Entities.AppUser", b =>
+                {
+                    b.HasOne("BurcusBlog.Entity.Entities.Image", "Image")
+                        .WithMany("Users")
+                        .HasForeignKey("ImageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Image");
                 });
 
             modelBuilder.Entity("BurcusBlog.Entity.Entities.AppUserClaim", b =>
@@ -563,13 +588,24 @@ namespace BurcusBlog.Data.Migrations
 
                     b.HasOne("BurcusBlog.Entity.Entities.Image", "Image")
                         .WithMany("Articles")
-                        .HasForeignKey("ImageId")
+                        .HasForeignKey("ImageId");
+
+                    b.HasOne("BurcusBlog.Entity.Entities.AppUser", "User")
+                        .WithMany("Articles")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Category");
 
                     b.Navigation("Image");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("BurcusBlog.Entity.Entities.AppUser", b =>
+                {
+                    b.Navigation("Articles");
                 });
 
             modelBuilder.Entity("BurcusBlog.Entity.Entities.Category", b =>
@@ -580,6 +616,8 @@ namespace BurcusBlog.Data.Migrations
             modelBuilder.Entity("BurcusBlog.Entity.Entities.Image", b =>
                 {
                     b.Navigation("Articles");
+
+                    b.Navigation("Users");
                 });
 #pragma warning restore 612, 618
         }

@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -24,6 +25,7 @@ namespace BurcusBlog.Data.Mappings
                 CreatedBy = "Admin Test",
                 CreatedDate = DateTime.Now,
                 IsDeleted = false,
+                UserId = Guid.Parse("275B092A-F867-42C9-89FB-167DC1C9A292"),
             },
             new Article
             {
@@ -36,6 +38,7 @@ namespace BurcusBlog.Data.Mappings
                 CreatedBy = "Admin Test",
                 CreatedDate = DateTime.Now,
                 IsDeleted = false,
+                UserId =Guid.Parse("67F122E2-0B40-4204-B3AB-17C6031AD896"),
             }
             );;
         }
