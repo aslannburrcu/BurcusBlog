@@ -1,4 +1,6 @@
-﻿using BurcusBlog.Data.UnitOfWorks;
+﻿using AutoMapper;
+using BurcusBlog.Data.UnitOfWorks;
+using BurcusBlog.Entity.DTOs.Articles;
 using BurcusBlog.Entity.Entities;
 using BurcusBlog.Service.Services.Abstractions;
 using System;
@@ -12,13 +14,18 @@ namespace BurcusBlog.Service.Services.Concrete
     public class ArticleService : IArticleService
     {
         private readonly IUnitOfWork unitOfWork;
-        public ArticleService(IUnitOfWork unitOfWork)
+        private readonly IMapper mapper;
+        public ArticleService(IUnitOfWork unitOfWork, IMapper mapper)
         {
             this.unitOfWork = unitOfWork;
+            this.mapper = mapper;
         }
-        public async Task<List<Article>> GetAllArticleAsync()
+        public async Task<List<ArticleDto>> GetAllArticleAsync()
         {
-            return await unitOfWork.GetRepository<Article>().GetAllAsync();
+         var articles = await unitOfWork.GetRepository<Article>().GetAllAsync();
+            var map = mapper.Map<List<ArticleDto>>(articles);
+
+            return map;
         }
     }
 }

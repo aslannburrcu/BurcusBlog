@@ -1,4 +1,5 @@
-﻿using BurcusBlog.Entity.Entities;
+﻿using BurcusBlog.Entity.DTOs.Articles;
+using BurcusBlog.Entity.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,7 @@ namespace BurcusBlog.Service.Services.Abstractions
 {
     public interface IArticleService 
     {
-        Task<List<Article>> GetAllArticleAsync();
+        Task<List<ArticleDto>> GetAllArticleAsync();
+
     }
 }
