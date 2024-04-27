@@ -8,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.LoadDataLayerExtension(builder.Configuration);
 builder.Services.LoadServiceExtensions();
+builder.Services.AddSession();
 // Add services to the container.
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
