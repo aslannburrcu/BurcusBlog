@@ -1,17 +1,14 @@
 ﻿using BurcusBlog.Service.Services.Abstractions;
-using BurcusBlog.Service.Services.Concrete;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Cryptography.X509Certificates;
 
 namespace BurcusBlog.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize]
-    public class HomeController : Controller
+    public class ArticleController : Controller
     {
         private readonly IArticleService articleService;
-        public HomeController(IArticleService articleService) 
+
+        public ArticleController(IArticleService articleService)
         {
             this.articleService = articleService;
         }
